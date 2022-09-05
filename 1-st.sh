@@ -1,17 +1,24 @@
 #!/bin/bash
-echo 'Введите два числа'
-read m n
-gcd ()
+function gcd ()
 {
-    while [[ m != 0 && n != 0 ]]
-        do
-        if [[ m -gt n ]]
-        then a = `expr $m % $n`
-        echo $a
-        else
-            b = `expr $n % $m`
-        echo $b
-        fi
-        done
+if [[ $m == $n ]]
+then echo "GCD is $m"
+elif [[ $m -gt $n ]]
+then gcd $(( $m-$n )) $n
+else gcd $m $(( $n-$m ))
+fi
 }
+
+while true
+do
+read -p "Введите два числа: " m n
+if [[ -z $m && $n ]]
+then
+    break
+fi
+
 gcd $m $n
+
+done
+
+echo "Bye!"
