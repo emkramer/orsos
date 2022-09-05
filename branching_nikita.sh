@@ -7,7 +7,7 @@ do
     then echo 'No students'
     elif [[ $num -eq 1 ]]
     then echo "lya ti crisa 1 student" 
-    elif [[ $num =~ ^[1-5]+$ ]]
+    elif [[ $num =~ ^[1-4]+$ ]]
     then echo "$num students"
     else echo "A lot of students"
     fi
