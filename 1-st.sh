@@ -1,24 +1,18 @@
 #!/bin/bash
-function gcd ()
-{
-if [[ $m == $n ]]
-then echo "GCD is $m"
-elif [[ $m -gt $n ]]
-then gcd $(( $m-$n )) $n
-else gcd $m $(( $n-$m ))
-fi
-}
-
-while true
-do
-read -p "Введите два числа: " m n
-if [[ -z $m && $n ]]
+read -p "Enter two numbers: " a b
+m=$a
+if [ $b -lt $m ]
 then
-    break
+m=$b
 fi
-
-gcd $m $n
-
+while [ $m -ne 0 ]
+do
+x=`expr $a % $m`
+y=`expr $b % $m`
+if [ $x -eq 0 -a $y -eq 0 ]
+then
+echo gcd of $a and $b is $m
+break
+fi
+m=`expr $m - 1`
 done
-
-echo "Bye!"
